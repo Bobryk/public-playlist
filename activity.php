@@ -39,6 +39,7 @@
 		$owner = $_SESSION['userId'];
 		if($songTitle!=""||$artistTitle!=""){
 			$songName= urlencode($songTitle);
+			$artistTitle = urlencode($artistTitle);
 			
 			$url = 'https://api.spotify.com/v1/search?q=' . $songName . '&type=track';
 			$ch = curl_init();
