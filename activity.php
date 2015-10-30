@@ -38,32 +38,7 @@
 		$artistTitle = mysql_real_escape_string($_POST['artist']);
 		$owner = $_SESSION['userId'];
 		if($songTitle!=""||$artistTitle!=""){
-			$songName= str_replace(" ", "%20", $songTitle);
-			$songName=str_replace("!","%21",$songName);
-			$songName=str_replace("\"","%22",$songName);
-			$songName=str_replace("#","%23",$songName);
-			$songName=str_replace("$","%24",$songName);
-			$songName=str_replace("&","%26",$songName);
-			$songName=str_replace("'","%27",$songName);
-			$songName=str_replace("(","%28",$songName);
-			$songName=str_replace(")","%29",$songName);
-			$songName=str_replace("*","%2A",$songName);
-			$songName=str_replace("+","%2B",$songName);
-			$songName=str_replace(",","%2C",$songName);
-			$songName=str_replace("-","%2D",$songName);
-			$songName=str_replace(".","%2E",$songName);
-			$songName=str_replace("/","%2F",$songName);
-			$songName=str_replace(":","%3A",$songName);
-			$songName=str_replace(";","%3B",$songName);
-			$songName=str_replace("<","%3C",$songName);
-			$songName=str_replace("=","%3D",$songName);
-			$songName=str_replace(">","%3E",$songName);
-			$songName=str_replace("?","%3F",$songName);
-			$songName=str_replace("@","%40",$songName);
-			$songName=str_replace("[","%5B",$songName);
-			$songName=str_replace("]","%5D",$songName);
-			$songName=str_replace("^","%5E",$songName);
-			$songName=str_replace("_","%5F",$songName);
+			$songName= urlencode($songTitle);
 			
 			$url = 'https://api.spotify.com/v1/search?q=' . $songName . '&type=track';
 			$ch = curl_init();
